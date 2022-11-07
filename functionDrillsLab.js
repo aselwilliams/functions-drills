@@ -14,7 +14,7 @@
 function helloWorld() {
   console.log("Hello World!");
 }
-
+helloWorld()
 ////////////////// PROBLEM 2 ////////////////////
 
 /*
@@ -68,6 +68,7 @@ greeting("Jake");
 //CODE HERE
 const compareNums = (num1, num2) => {
   return num1 === num2 ? num1 : num1 > num2 ? num1 : num2;
+  // return (num1 >= num2) ? num1 :num2;
 };
 console.log(compareNums(3, 5));
 console.log(compareNums(8, 8));
@@ -261,13 +262,13 @@ let loser = "Glimmer";
 */
 
 //CODE HERE
-const theEliminator = (arr, str) => {
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] === str) {
-      arr.splice(i, 1);
+const theEliminator = (contestantsArr, loserStr) => {
+  for (let i = 0; i < contestantsArr.length; i++) {
+    if (contestantsArr[i] === loserStr) {
+      contestantsArr.splice(i, 1);
     }
   }
-  return arr;
+  return contestantsArr;
 };
 console.log(theEliminator(contestants, loser));
 ////////////////// PROBLEM 17 ////////////////////
@@ -318,7 +319,7 @@ console.log(totalFrogs);
 
 //CODE HERE
 const canAfford2 = (gold) => {
-  return Math.round(gold / 3);
+  return Math.floor(gold / 3);
 };
 const totalFrogs2 = canAfford2(4);
 console.log(totalFrogs2);
@@ -329,11 +330,26 @@ let sampleArray = [0, 1, 2, 3, 4, 7, 5, 6, 8, 9];
 */
 
 //CODE HERE
+//one way with JSON.stringify
 const isSorted = (arr) => {
-  return JSON.stringify(arr) === JSON.stringify(arr.slice().sort())
+  return JSON.stringify(arr) === JSON.stringify(arr.slice().sort((a,b)=> a-b))
 };
 const arrayIsAscending = isSorted(sampleArray);
 console.log(arrayIsAscending);
+
+//another way with for loop
+// const isSorted = (arr) => {
+//   let sorted = arr.slice().sort((a,b)=> a-b)
+//   for(let i=0; i<arr.length; i++){
+//     if(arr[i]!==sorted[i]){
+//       return false
+//     }  
+//   }
+//   return true
+// }
+// const arrayIsAscending = isSorted(sampleArray);
+// console.log(arrayIsAscending);
+
 ////////////////// PROBLEM 22 ////////////////////
 
 let duck = "cute";
